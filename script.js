@@ -1,35 +1,64 @@
 const myLibrary = [];
 
 
-function Book(title, author, length, status) {
-    this.id = crypto.randomUUID;
-    this.title = title;
-    this.author = author;
-    this.pages = length;
+// function Book(title, author, length, status) {
+//     this.id = crypto.randomUUID;
+//     this.title = title;
+//     this.author = author;
+//     this.pages = length;
     
-    if (status) {
-        this.status = "Finished reading";
-    } else {
-        this.status = "Not read yet";
-    }
+//     if (status) {
+//         this.status = "Finished reading";
+//     } else {
+//         this.status = "Not read yet";
+//     }
 
-    this.info = function() {
-        return `${this.title} by ${this.author}, ${this.length}, ${status}`
-    };
-}
+//     this.info = function() {
+//         return `${this.title} by ${this.author}, ${this.length}, ${status}`
+//     };
+// }
 
-Book.prototype.toggleRead = function() {
-    if (this.status === "finished reading") {
-        this.status = "not read yet";
-    } else {
-        this.status = "finished reading";
-    }
-}
+// Book.prototype.toggleRead = function() {
+//     if (this.status === "finished reading") {
+//         this.status = "not read yet";
+//     } else {
+//         this.status = "finished reading";
+//     }
+// }
 
 function addDialogToLibrary(title, author, length, status) {
     const book = new Book(title, author, length, status);
 
     myLibrary.push(book);
+}
+
+class Book {
+    constructor(title, author, length, status) {
+        this.id = crypto.randomUUID;
+        this.title = title;
+        this.author = author;
+        this.pages = length;
+        
+        if (status) {
+        this.status = "Finished reading";
+        } else {
+        this.status = "Not read yet";
+        }
+    }
+
+
+
+    info() {
+        return `${this.title} by ${this.author}, ${this.length}, ${this.status}`;
+    }
+
+    toggleRead() {
+        if (this.status === "Finished reading") {
+        this.status = "Not read yet";
+        } else {
+            this.status = "Finished reading";
+        }
+    }
 }
 
 
